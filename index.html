@@ -1,356 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asad Ullah | Logistics Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* -----------------------------------
+   GLOBAL DESIGN SETUP – STEP 1 ONLY
+----------------------------------- */
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f7f7f7;
-        }
+/* 1. Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8F9FA; /* Off-white */
+    color: #1A1A1A; /* Heading text color */
+    line-height: 1.6;
+}
 
-        /* Container */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 2rem 0;
-        }
+/* 2. Color Variables (Saudi Theme) */
+:root {
+    --primary: #006241;    /* Saudi Green */
+    --gold: #A07400;       /* Gold Accent */
+    --background: #F8F9FA; /* Off-white */
+    --text-dark: #1A1A1A;
+}
 
-        /* Header / Hero */
-        header {
-            background: url('images/warehouse-backcover.jpg') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-            position: relative;
-        }
+/* 3. Smooth Animations */
+* {
+    transition: all 0.3s ease-in-out;
+}
 
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
+/* 4. Page Layout Spacing */
+section {
+    padding: 70px 12%;
+    position: relative;
+}
 
-        header .hero-content {
-            position: relative;
-            z-index: 1;
-        }
+/* 5. Headings */
+h1, h2, h3 {
+    color: var(--text-dark);
+    font-weight: 600;
+}
 
-        header img.dp {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid white;
-            margin-bottom: 20px;
-        }
+/* 6. Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
+}
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+.btn:hover {
+    background-color: white;
+    color: var(--primary);
+    border-color: var(--primary);
+}
 
-        header p {
-            font-size: 1.1rem;
-        }
+/* 7. Glow-on-hover Effect for Important Sections */
+.glow-section {
+    background: white;
+    border-radius: 14px;
+    padding: 50px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
 
-        /* Sections */
-        section {
-            padding: 60px 0;
-        }
+/* Glow when mouse hovers */
+.glow-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 40px rgba(0, 98, 65, 0.35); /* Green glow */
+    background: white;
+}
 
-        section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #1e3a8a;
-            position: relative;
-        }
+/* 8. Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
 
-        section h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: #1e3a8a;
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
-
-        /* About */
-        #about p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-        }
-
-        /* Education, Experience, Skills */
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(30,58,138,0.4);
-        }
-
-        .card h3 {
-            color: #1e3a8a;
-            margin-bottom: 10px;
-        }
-
-        .card ul {
-            list-style: disc inside;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-box {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .skill-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(30,58,138,0.4);
-        }
-
-        /* Certificates & Projects */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .image-gallery img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .image-gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(30,58,138,0.4);
-        }
-
-        /* Contact */
-        #contact {
-            text-align: center;
-        }
-
-        #contact a {
-            display: inline-block;
-            margin: 10px 20px;
-            padding: 10px 20px;
-            background: #1e3a8a;
-            color: white;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        #contact a:hover {
-            background: #3b82f6;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #1e3a8a;
-            color: white;
-        }
-
-        @media(max-width: 768px){
-            header {
-                padding: 80px 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header / Hero -->
-    <header>
-        <div class="hero-content">
-            <img src="images/dp.jpg" alt="Asad Ullah DP" class="dp">
-            <h1>Asad Ullah</h1>
-            <p>Logistics & Supply Chain Enthusiast | Warehouse Operations | Inventory Accuracy | Transport & Dispatch Coordination</p>
-        </div>
-    </header>
-
-    <div class="container">
-
-        <!-- About -->
-        <section id="about">
-            <h2>About Me</h2>
-            <p>I am an adaptable, disciplined, and detail-oriented professional seeking opportunities in Logistics & Warehouse Operations, including roles such as Logistics Coordinator, Warehouse Assistant, Inventory Assistant, and Transport Assistant. I focus on accuracy, responsibility, and time management, ensuring that warehouse operations run smoothly and efficiently. I am committed to improving processes, collaborating effectively with teams, and contributing to reliable and organized supply chain operations.</p>
-        </section>
-
-        <!-- Education -->
-        <section id="education">
-            <h2>Education</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Diploma in Pharmacy (D.Pharm)</h3>
-                    <p>SHUATS, Prayagraj | Expected Completion: 2026</p>
-                </div>
-                <div class="card">
-                    <h3>B.Sc. in Zoology, Botany & Chemistry</h3>
-                    <p>Integral University, Lucknow | Completed: 2024</p>
-                </div>
-                <div class="card">
-                    <h3>12th (Intermediate)</h3>
-                    <p>UP Board, Jawahar Lal Inter College, Prayagraj | Year: 2021</p>
-                </div>
-                <div class="card">
-                    <h3>10th (High School)</h3>
-                    <p>ICSE Board, Benhur High School & College, Prayagraj | Year: 2018</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Business Operations Executive</h3>
-                    <p>Alhabib Trader | Jan 2019 - Mar 2020</p>
-                    <ul>
-                        <li>Managed customer interactions and ensured client satisfaction.</li>
-                        <li>Tracked inventory, including raw materials and finished products.</li>
-                        <li>Oversaw labor supervision, warehouse workflow, and product handling.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Accounting & Data Entry Assistant</h3>
-                    <p>Private Real Estate Firm | Present - 4 months</p>
-                    <ul>
-                        <li>Handled financial transactions (~50+ transactions/month).</li>
-                        <li>Performed accurate data entry of records and financial information.</li>
-                        <li>Contributed to efficient record-keeping and reporting.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section id="skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-box">Warehouse Operations</div>
-                <div class="skill-box">Inventory Management & Stock Accuracy</div>
-                <div class="skill-box">Transport & Dispatch Coordination</div>
-                <div class="skill-box">Procurement</div>
-                <div class="skill-box">Process Optimization</div>
-                <div class="skill-box">Prompt Engineering & AI Automation</div>
-                <div class="skill-box">Microsoft Excel (Advanced)</div>
-                <div class="skill-box">Power BI</div>
-                <div class="skill-box">Team Collaboration & Communication</div>
-            </div>
-        </section>
-
-        <!-- Certificates -->
-        <section id="certificates">
-            <h2>Certificates</h2>
-            <div class="image-gallery">
-                <img src="images/certificate1.jpg" alt="Certificate 1">
-                <img src="images/certificate2.jpg" alt="Certificate 2">
-                <img src="images/certificate3.jpg" alt="Certificate 3">
-                <img src="images/certificate4.jpg" alt="Certificate 4">
-                <img src="images/certificate5.jpg" alt="Certificate 5">
-                <img src="images/certificate6.jpg" alt="Certificate 6">
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="image-gallery">
-                <img src="images/vigna1.jpg" alt="Vigna Project 1">
-                <img src="images/vigna2.jpg" alt="Vigna Project 2">
-                <img src="images/vigna3.jpg" alt="Vigna Project 3">
-            </div>
-        </section>
-
-        <!-- Extracurricular -->
-        <section id="extracurricular">
-            <h2>Extracurricular Activities</h2>
-            <div class="image-gallery">
-                <img src="images/extracurricular1.jpg" alt="Activity 1">
-                <img src="images/extracurricular2.jpg" alt="Activity 2">
-                <img src="images/extracurricular3.jpg" alt="Activity 3">
-                <img src="images/extracurricular4.jpg" alt="Activity 4">
-                <img src="images/extracurricular5.jpg" alt="Activity 5">
-            </div>
-        </section>
-
-        <!-- Reading & Learning -->
-        <section id="reading">
-            <h2>Reading & Learning</h2>
-            <div class="image-gallery">
-                <img src="images/book1.jpg" alt="Atomic Habits">
-                <img src="images/book2.jpg" alt="The Compound Effect">
-                <img src="images/book3.jpg" alt="Think and Grow Rich">
-                <img src="images/book4.jpg" alt="Power of Subconscious Mind">
-                <img src="images/book5.jpg" alt="How to Win Friends">
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact">
-            <h2>Contact</h2>
-            <a href="mailto:asadullah3402@gmail.com">Email Me</a>
-            <a href="tel:+918318013402">Call / WhatsApp</a>
-            <a href="https://linkedin.com/in/asadullah-logistics" target="_blank">LinkedIn</a>
-        </section>
-
-    </div>
-
-    <footer>
-        &copy; 2025 Asad Ullah | Logistics & Supply Chain Enthusiast
-    </footer>
-
-</body>
-</html>
+/* 9. For better visual spacing */
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
